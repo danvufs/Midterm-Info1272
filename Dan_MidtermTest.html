@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dan_MidtermTest</title>
+</head>
+<body>
+    <script>
+        /*Dear Professor,
+        The interest rate in your video and the interest in our test are different. Therefore, the value of the interest in my test will not be the same as in your video*/
+        var balance = 5000.0;
+        var INTEREST_RATE = 0.025;
+        function deposit()//create deposit function
+        {
+            //Gather User input for deposit
+            var deposit = parseFloat(prompt("How much would you like to deposit?", "250"))
+            var oldBalance = balance;
+            balance = balance + deposit;//calculate the new balance after the user input deposit
+            //Output full information (Deposited amount, the old balance and new balance) with 2 decimal places
+            alert("Deposit: $" + deposit.toFixed(2) +"\n" + "Balance: $" + oldBalance.toFixed(2) + "->" + "$" + balance.toFixed(2));
+        }
+        function withdraw()//create withdraw function
+        {
+            //Gather User input for withdraw
+            var withdraw = parseFloat(prompt("How much would you like to withdraw?", "250"));
+            /*If the amount entered is greater than the balance, alert the user that there are
+            insufficient funds*/
+            if (withdraw > balance)
+            {
+                alert("Insufficient funds for withdrawal!")
+            }
+            else//When the amount is less than the balance, then proceed with the withdrawal
+            {
+                var oldBalance = balance;//declare old balance
+                balance = balance - withdraw;//calculate the new balance
+                //Output the balance before and after the withdrawal with 2 decimal places.
+                alert("Withdraw: $" + withdraw.toFixed(2) +"\n" + "Balance: $" + oldBalance.toFixed(2) + "->" + "$" + balance.toFixed(2))
+            }
+        }
+        function viewBalance()//create function to view current balance
+        {
+            alert("Current Balance: $" + balance.toFixed(2));//Output current balance value with 2 decimal places
+        }
+        function calculateInterest()//create function to calculate the interest
+        {
+            //Gather the number of months that user wants to calculate
+            var monthnumbers = parseInt(prompt("How many months interest would you like to simulate?", "12"));
+            var tempBalance = balance;//declare and assign value for tempBalance
+            var oldBalance; //declare a variable named oldBlance
+            console.log("Projecting 6 months of interest...");
+            for (var i = 1; i <= monthnumbers; i++)
+            {
+                oldBalance = tempBalance;
+                tempBalance = tempBalance * (INTEREST_RATE + 1);//calculate interest
+                //Output information (month, Balance at start of month, interest rate, the balance with the added interest earned )
+                console.log("Month " + i + ":" + " $" + oldBalance.toFixed(2)+ " x 0.025%" + " = " + "$" + tempBalance.toFixed(2));
+            }
+        }
+        function midterm()
+        { 
+            var continueTransaction = true;
+            while (continueTransaction==true)//create a loop 
+            {
+                //prompt the user to select a type of transaction
+                var choice = window.prompt("What transaction would you like to perform today?\nB - Show Balance\nD - Deposit\nW - Withdraw\nC - Calculate annual interest")
+            if (choice === "B") 
+            {
+                viewBalance();
+            } 
+            else if (choice === "D")
+            {
+                deposit();
+            } 
+            else if (choice === "W")
+            {
+                withdraw();
+            } 
+            else if (choice === "C")
+            {
+                calculateInterest();
+            }
+            //Ask user if they want to perform another transaction
+            continueTransaction = window.confirm("Would you like to perform another transaction? OK == yes|CANCEL == no");
+            }
+        }
+    </script>
+</body>
+</html>
