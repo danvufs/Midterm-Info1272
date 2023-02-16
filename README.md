@@ -36,4 +36,5 @@ The application will continue to prompt the user to perform another transaction 
 
 
 Contributing
+
 If you would like to contribute to Dan MidtermTest, please feel free to submit a pull request. Any contributions are greatly appreciated.
